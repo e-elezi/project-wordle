@@ -1,12 +1,15 @@
 import React from "react";
-import styles from "./GuessInput.module.css";
 
-function GuessInput() {
+//send a Guess in the form {value, id}
+function GuessInput({ handleAddGuess }) {
   const [value, setValue] = React.useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("Value is: ", value);
+    handleAddGuess({
+      value,
+      id: Math.random(),
+    });
     setValue("");
   }
 
@@ -19,7 +22,7 @@ function GuessInput() {
       <input
         type="text"
         id="guess-input"
-        className={styles.textInput}
+        className="uppercase"
         pattern="[a-z]{5}"
         value={value}
         onChange={(event) => setValue(event.target.value)}
