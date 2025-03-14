@@ -20,14 +20,17 @@ function GuessInput({ handleAddGuess }) {
     >
       <label htmlFor="guess-input">Enter guess:</label>
       <input
+        required
         type="text"
         id="guess-input"
         className="uppercase"
-        pattern="[a-z]{5}"
+        pattern="[a-zA-Z]{5}"
+        minLength={5}
+        maxLength={10}
         value={value}
+        title="5 letter words only"
         onChange={(event) => setValue(event.target.value)}
       />
-      <p>Please enter 5 letter words only!</p>
     </form>
   );
 }
