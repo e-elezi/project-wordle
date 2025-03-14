@@ -1,14 +1,24 @@
 import React from "react";
 import { range } from "../../utils";
 
-function Guess({ value }) {
+//receives an array of objects {letter, status}
+function Guess({ evaluatedGuess }) {
   return (
     <p className="guess">
-      {range(0, 5).map((column, i) => (
-        <span className="cell uppercase" key={i}>
-          {value !== undefined ? value.value[i] : ""}
-        </span>
-      ))}
+      {range(0, 5).map((column, i) => {
+        if (evaluatedGuess === undefined) {
+          return <span className="cell" key={i} />;
+        }
+
+        return (
+          <span
+            className={`cell uppercase ${evaluatedGuess[i].status}`}
+            key={i}
+          >
+            {evaluatedGuess[i].letter}
+          </span>
+        );
+      })}
     </p>
   );
 }
