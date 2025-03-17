@@ -1,6 +1,6 @@
 import React from "react";
 
-function Banner({ status, numberOfGuesses, answer }) {
+function Banner({ status, numberOfGuesses, answer, restartGame }) {
   return (
     <>
       {status === "happy" ? (
@@ -12,6 +12,7 @@ function Banner({ status, numberOfGuesses, answer }) {
             </strong>
             .
           </p>
+          <button onClick={() => restartGame()}>-> Restart Game{` <-`}</button>
         </div>
       ) : undefined}
       {status === "sad" ? (
@@ -19,6 +20,7 @@ function Banner({ status, numberOfGuesses, answer }) {
           <p>
             Sorry, the correct answer is <strong>{answer}</strong>.
           </p>
+          <button onClick={() => restartGame()}>-> Restart Game{` <-`}</button>
         </div>
       ) : undefined}
     </>
